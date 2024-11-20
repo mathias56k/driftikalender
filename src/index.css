@@ -1,0 +1,65 @@
+@import url('https://use.typekit.net/bcf4tqm.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    background-color: #171614;
+}
+
+.react-calendar__navigation__prev2-button, .react-calendar__navigation__next2-button{
+    visibility: hidden;
+}
+
+.react-calendar__navigation__prev-button, .react-calendar__navigation__next-button, .react-calendar__navigation__label {
+    background-color: #232220 !important;
+}
+
+.react-calendar__navigation__label{
+    width: 12rem;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.react-calendar__month-view__days {
+   padding: 0.5rem;
+}
+
+.react-calendar__month-view__weekdays {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+    text-decoration: none !important;
+}
+
+.react-calendar__tile--now {
+    background-color: blue;
+}
+
+.ReactModal__Content--after-open {
+    background-color: #232220 !important;
+    border: 0 !important;
+    height: fit-content;
+    width: fit-content;
+    position: relative !important;
+    inset: 0 !important;
+    min-width: 350px;
+    max-width: 600px;
+    padding-top: 5px !important;
+    border-radius: 0.75rem !important;
+}
+
+@media (min-width: 640px) {
+    .ReactModal__Content--after-open {
+      width: 600px;
+    }
+}
+
+.ReactModal__Overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
