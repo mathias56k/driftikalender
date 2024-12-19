@@ -19,18 +19,18 @@ import MapComponent from "./MapComponent";
 Modal.setAppElement("#root");
 
 const monthNamesInEstonian = {
-  January: "Jaanuar",
-  February: "Veebruar",
-  March: "Märts",
-  April: "Aprill",
-  May: "Mai",
-  June: "Juuni",
-  July: "Juuli",
+  January: "January",
+  February: "February",
+  March: "March",
+  April: "April",
+  May: "May",
+  June: "June",
+  July: "July",
   August: "August",
   September: "September",
-  October: "Oktoober",
+  October: "October",
   November: "November",
-  December: "Detsember",
+  December: "December",
 };
 
 const openGoogleMaps = (lat, lng) => {
@@ -69,51 +69,111 @@ function App() {
 
   const events = [
     {
+      startDate: new Date(2025, 3, 25),
+      endDate: new Date(2025, 3, 26),
+      title: 'Hyvinkää, Finland',
+      coordinates: { lat: 60.662, lng: 24.902 },
+      country: "Finland",
+      nezcolor: "#64C9DD",
+      neztag: "NEZ",
+    },
+    {
       startDate: new Date(2025, 3, 26),
       endDate: new Date(2025, 3, 26),
-      title: '"Avalaks" - Eesti',
+      title: '"Avalaks" - Estonia',
+      country: "Estonia",
+      estcolor: "#0171CC",
+      esttag: "EST",
     },
     {
       startDate: new Date(2025, 4, 2),
       endDate: new Date(2025, 4, 3),
-      title: '"Mulgidrift" - Raassilla, Eesti',
+      title: '"Mulgidrift" - Raassilla, Estonia',
       coordinates: { lat: 58.248, lng: 25.748 },
+      country: "Estonia",
+      livcolor: "#690300",
+      livtag: "LIV",
+      estcolor: "#0171CC",
+      esttag: "EST",
+      balcolor: "#269D9F",
+      baltag: "BAL",
     },
     {
       startDate: new Date(2025, 4, 17),
       endDate: new Date(2025, 4, 18),
-      title: 'Bikernieki, Läti',
+      title: 'Bikernieki, Latvia',
       coordinates: { lat: 56.965, lng: 24.228 },
+      country: "Latvia",
+      livcolor: "#690300",
+      livtag: "LIV",
     },
     {
       startDate: new Date(2025, 5, 13),
       endDate: new Date(2025, 5, 14),
-      title: '"Jump for Drift" - Laitse RP, Eesti',
+      title: '"Jump for Drift" - Laitse RP, Estonia',
       coordinates: { lat: 59.173, lng: 24.362 },
+      country: "Estonia",
+      livcolor: "#690300",
+      livtag: "LIV",
+      estcolor: "#0171CC",
+      esttag: "EST",
+      balcolor: "#269D9F",
+      baltag: "BAL",
+    },
+    {
+      startDate: new Date(2025, 6, 5),
+      endDate: new Date(2025, 6, 5),
+      title: 'Driftiškes, Lithuania',
+      coordinates: { lat: 55.985, lng: 23.020 },
+      country: "Lithuania",
+      balcolor: "#269D9F",
+      baltag: "BAL",
     },
     {
       startDate: new Date(2025, 7, 8),
       endDate: new Date(2025, 7, 10),
-      title: '"Southside" - Kulbilohu, Eesti',
+      title: '"Southside" - Kulbilohu, Estonia',
       coordinates: { lat: 58.252, lng: 26.410 },
+      country: "Estonia",
+      nezcolor: "#64C9DD",
+      neztag: "NEZ",
+      livcolor: "#690300",
+      livtag: "LIV",
+      estcolor: "#0171CC",
+      esttag: "EST",
     },
     {
       startDate: new Date(2025, 8, 6),
       endDate: new Date(2025, 8,7),
-      title: '"Witch Kettle" - Bikernieki, Läti',
+      title: '"Witch Kettle" - Bikernieki, Latvia',
       coordinates: { lat: 56.965, lng: 24.228 },
+      country: "Latvia",
+      livcolor: "#690300",
+      livtag: "LIV",
+      balcolor: "#269D9F",
+      baltag: "BAL",
     },
     {
       startDate: new Date(2025, 8, 19),
       endDate: new Date(2025, 8, 20),
-      title: '"Superfinaalid" - Kehala, Eesti',
+      title: '"Superfinaalid" - Kehala, Estonia',
       coordinates: { lat: 59.270, lng: 26.474 },
+      country: "Estonia",
+      estcolor: "#0171CC",
+      esttag: "EST",
     },
     {
-      startDate: new Date(2025, 9, 3),
+      startDate: new Date(2025, 9, 2),
       endDate: new Date(2025, 9, 5),
-      title: 'Bikernieki, Läti',
+      title: 'Bikernieki, Latvia',
       coordinates: { lat: 56.965, lng: 24.228 },
+      country: "Latvia",
+      nezcolor: "#64C9DD",
+      neztag: "NEZ",
+      livcolor: "#690300",
+      livtag: "LIV",
+      balcolor: "#269D9F",
+      baltag: "BAL",
     },
   ];
 
@@ -215,10 +275,10 @@ function App() {
 
       <div className="flex-grow flex justify-center items-start px-4 xs:w-[515px]">
         {view === "list" ? (
-          <div className="w-full max-w-xl bg-[#232220] overflow-y-auto rounded-xl">
+          <div className="w-full max-w-xl bg-[#232220] mx-4 sm:mx-0 overflow-y-auto rounded-xl">
             <div className="w-full flex justify-center mt-8 mb-4">
               <h2 className="text-4xl font-bold font-main text-[#E8E8E8]">
-                Ürituste List
+                Event List
               </h2>
             </div>
             {Object.keys(groupedEvents).map((month, index) => (
@@ -245,7 +305,7 @@ function App() {
                       onClick={() => openModal(event)}
                     >
                       <div className="w-full flex flex-col mb-4 text-[#E8E8E8]">
-                        <div className="font-main font-bold text-2xl">
+                        <div className="font-main font-bold text-2xl mr-4">
                           {event.title}
                         </div>
                         <div className="font-main text-[#D3D3D2]">
@@ -253,7 +313,14 @@ function App() {
                           {event.endDate.toLocaleDateString()}
                         </div>
                       </div>
-                      <div className="flex justify-start items-start w-full gap-2">
+                      <div className="flex justify-start items-center w-full gap-2">
+                        <div>
+                          <img 
+                            src={`/${event.country}.svg`} 
+                            alt="" 
+                            className="h-[1.8rem] rounded-lg" 
+                          />
+                        </div>
                         {event.esptag && (
                           <div
                             className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
@@ -280,6 +347,66 @@ function App() {
                             {event.esstag}
                             <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
                               {`Eesti SEMIPRO Meistrivõistlused`}
+                            </span>
+                          </div>
+                        )}
+
+                        {event.neztag && (
+                          <div
+                            className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                            style={{ backgroundColor: event.nezcolor }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                          >
+                            {event.neztag}
+                            <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                              {`NEZ Drift Championship`}
+                            </span>
+                          </div>
+                        )}
+
+                        {event.livtag && (
+                          <div
+                            className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                            style={{ backgroundColor: event.livcolor }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                          >
+                            {event.livtag}
+                            <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                              {`Livonia Drift Championship`}
+                            </span>
+                          </div>
+                        )}
+
+                        {event.esttag && (
+                          <div
+                            className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                            style={{ backgroundColor: event.estcolor }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                          >
+                            {event.esttag}
+                            <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                              {`Estonian Drift Championship`}
+                            </span>
+                          </div>
+                        )}
+
+                        {event.baltag && (
+                          <div
+                            className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                            style={{ backgroundColor: event.balcolor }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                          >
+                            {event.baltag}
+                            <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                              {`Baltic Drift Championship`}
                             </span>
                           </div>
                         )}
@@ -322,7 +449,7 @@ function App() {
   shouldCloseOnOverlayClick={true}
   onRequestClose={closeModal}
   contentLabel="Event Details"
-  overlayClassName="fixed inset-0 bg-[#171614] bg-opacity-75"
+  overlayClassName="fixed inset-0 bg-[#171614] bg-opacity-75 mx-4 sm:mx-0"
 >
   <div>
     {selectedEvent && (
@@ -344,7 +471,7 @@ function App() {
           <>
             <MapComponent coordinates={selectedEvent.coordinates} />
             <div className="mt-4 flex gap-2 w-full justify-center">
-              <p className="text-xl font-main font-semibold text-[#D3D3D2]">Navigeeri:</p>
+              <p className="text-xl font-main font-semibold text-[#D3D3D2]">Navigate:</p>
               <div className="flex gap-2">
                 <button
                   onClick={() => openGoogleMaps(selectedEvent.coordinates.lat, selectedEvent.coordinates.lng)}
@@ -395,7 +522,7 @@ function App() {
                 <IoTicket className="w-8 h-8 text-[#D3D3D2] hover:text-[#FFD700]" />
               </a>
               <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-[#232220] bg-[#D3D3D2] rounded-lg px-2 py-1">
-                Piletite Ost
+                Tickets
               </span>
             </div>
           )}
@@ -409,7 +536,7 @@ function App() {
                 <FaFileSignature className="w-8 h-8 text-[#D3D3D2] hover:text-white" />
               </a>
               <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-[#232220] bg-[#D3D3D2] rounded-lg px-2 py-1">
-                Sõitjate Registeerimine
+                Driver Registration
               </span>
             </div>
           )}
@@ -440,13 +567,57 @@ function App() {
                 </span>
               </div>
             )}
+            {selectedEvent.neztag && (
+              <div
+                className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                style={{ backgroundColor: selectedEvent.nezcolor }}
+              >
+                {selectedEvent.neztag}
+                <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                  {`NEZ Drift Championship`}
+                </span>
+              </div>
+            )}
+            {selectedEvent.livtag && (
+              <div
+                className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                style={{ backgroundColor: selectedEvent.livcolor }}
+              >
+                {selectedEvent.livtag}
+                <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                  {`Livonia Drift Championship`}
+                </span>
+              </div>
+            )}
+            {selectedEvent.esttag && (
+              <div
+                className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                style={{ backgroundColor: selectedEvent.estcolor }}
+              >
+                {selectedEvent.esttag}
+                <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                  {`Estonian Drift Championship`}
+                </span>
+              </div>
+            )}
+            {selectedEvent.baltag && (
+              <div
+                className="relative group px-[0.75rem] py-[0.2rem] rounded-lg flex items-center justify-center text-white font-semibold font-main cursor-default"
+                style={{ backgroundColor: selectedEvent.balcolor }}
+              >
+                {selectedEvent.baltag}
+                <span className="absolute bottom-full left-0 mb-1 w-max hidden group-hover:block text-xs text-white bg-black rounded-lg px-2 py-1">
+                  {`Baltic Drift Championship`}
+                </span>
+              </div>
+            )}
           </div>
           {/* Close button */}
           <button
             onClick={closeModal}
             className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-main font-semibold"
           >
-            Sulge
+            Close
           </button>
         </div>
       </div>

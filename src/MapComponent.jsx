@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const MapComponent = ({ coordinates }) => {
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAxnI7juB3JbemLOZqnpYXBHZJAZPW30_o&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_API_KEY}&callback=initMap`;
     script.async = true;
     document.body.appendChild(script);
 

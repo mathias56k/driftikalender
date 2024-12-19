@@ -43,10 +43,10 @@ html {
     background-color: #232220 !important;
     border: 0 !important;
     height: fit-content;
-    width: fit-content;
+    width: 90%;
     position: relative !important;
     inset: 0 !important;
-    min-width: 350px;
+    min-width: 310px;
     max-width: 600px;
     padding-top: 5px !important;
     border-radius: 0.75rem !important;
