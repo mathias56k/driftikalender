@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
+import { Loader } from '@googlemaps/js-api-loader';
 
 const MapComponent = ({ coordinates }) => {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_API_KEY}&callback=initMap`;
-    script.async = true;
-    document.body.appendChild(script);
+    const loader = new Loader({
+      apiKey: import.meta.env.VITE_API_KEY,
+      version: "weekly",
+    });
 
-    window.initMap = () => {
+    loader.load().then(() => {
       const map = new google.maps.Map(document.getElementById('map'), {
         center: coordinates,
         zoom: 12,
@@ -182,19 +183,21 @@ const MapComponent = ({ coordinates }) => {
       });
 
       const customIcon = {
-        url: './pinpoint.svg', // Replace with the actual SVG image URL
-        scaledSize: new google.maps.Size(30, 30), // Scale the image (adjust size as needed)
+        url: './pinpoint.svg',
+        scaledSize: new google.maps.Size(30, 30),
       };
 
-      new google.maps.Marker({
+      new google.maps.Marker.AdvancedMarkerElement({
         position: coordinates,
         map: map,
-        icon: customIcon, // Apply the custom SVG icon here
+        icon: customIcon,
       });
-    };
+    });
   }, [coordinates]);
 
   return <div id="map" className="w-full h-64 rounded-2xl border-white border-2 mt-6"></div>;
 };
 
 export default MapComponent;
+
+
